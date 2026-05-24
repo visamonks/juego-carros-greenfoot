@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=PanelMarchas
+comment1.params=jugador
+comment1.target=PanelMarchas(CarroJugador)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ actualizarPanel()
+comment4.params=imagen
+comment4.target=void\ dibujarFondo(greenfoot.GreenfootImage)
+comment5.params=imagen
+comment5.target=void\ dibujarEstadoApagado(greenfoot.GreenfootImage)
+comment6.params=imagen
+comment6.target=void\ dibujarEstadoNormal(greenfoot.GreenfootImage)
+comment7.params=imagen\ marcha
+comment7.target=void\ dibujarMensajeCambio(greenfoot.GreenfootImage,\ int)
+numComments=8
