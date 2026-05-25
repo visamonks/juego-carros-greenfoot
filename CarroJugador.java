@@ -54,7 +54,7 @@ public class CarroJugador extends Actor
     public CarroJugador()
     {
         setImage("carro_jugador.png");
-        getImage().scale(70, 110);
+        getImage().scale(115, 110);
     }
 
     public void act()

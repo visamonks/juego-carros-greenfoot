@@ -29,6 +29,24 @@ public class MundoCarros extends World
 
         jugador = new CarroJugador();
         addObject(jugador, POS_X_JUGADOR, POS_Y_JUGADOR);
+        
+        carrorojoo rojo = new carrorojoo();
+        addObject(rojo, 500, 300);
+        
+        Carroazull azul = new Carroazull();
+        addObject(azul, 400, 300);
+        
+        Carroblanco blanco = new Carroblanco();
+        addObject(blanco, 500, 200);
+        
+        Carronegro negro = new Carronegro();
+        addObject(negro, 400, 200);
+        
+        Carronaranja naranja = new Carronaranja();
+        addObject(naranja, 500, 400);
+        
+        Carroverde verde = new Carroverde();
+        addObject(verde, 400, 400);
 
         PanelMarchas panelMarchas = new PanelMarchas(jugador);
         addObject(panelMarchas, POS_X_PANEL, POS_Y_PANEL);
