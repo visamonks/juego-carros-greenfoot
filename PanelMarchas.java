@@ -49,8 +49,8 @@ public class PanelMarchas extends Actor
 
         imagen.setFont(new Font("Arial", false, false, 17));
         imagen.setColor(Color.WHITE);
-        imagen.drawString("Espera: " + jugador.getTiempoApagado() + " s", 15, 60);
-        imagen.drawString("Desacelerando...", 15, 88);
+        imagen.drawString("Espera: " + jugador.getTiempoApagado() + " s", 15, 90);
+        imagen.drawString("Desacelerando...", 15, 50);
         imagen.drawString("Puedes girar", 15, 113);
     }
 
@@ -88,13 +88,13 @@ public class PanelMarchas extends Actor
     {
         if (jugador.necesitaSubirMarcha()) {
             imagen.setColor(new Color(255, 210, 60));
-            imagen.drawString("Sube con E: " + jugador.getTiempoCambioAlta() + "s", 15, 110);
+            imagen.drawString("Sube con E: " + jugador.getTiempoCambioAlta() + "s", 15, 130);
         } else if (jugador.necesitaBajarMarcha()) {
             imagen.setColor(new Color(255, 160, 60));
-            imagen.drawString("Baja con Q: " + jugador.getTiempoCambioBaja() + "s", 15, 110);
+            imagen.drawString("Baja con Q: " + jugador.getTiempoCambioBaja() + "s", 15, 130);
         } else if (marcha == 5) {
             imagen.setColor(new Color(80, 230, 120));
-            imagen.drawString("Marcha final", 15, 110);
+            imagen.drawString("Marcha final", 15, 130);
         } else {
             imagen.setColor(new Color(120, 220, 120));
             imagen.drawString("Cambio estable", 15, 130);
