@@ -42,9 +42,6 @@ public class MundoCarros extends World
         Carronegro negro = new Carronegro();
         addObject(negro, 400, 200);
         
-        Carronaranja naranja = new Carronaranja();
-        addObject(naranja, 500, 400);
-        
         Carroverde verde = new Carroverde();
         addObject(verde, 400, 400);
 

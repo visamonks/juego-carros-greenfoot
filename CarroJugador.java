@@ -1,6 +1,6 @@
 import greenfoot.*;
 
-public class CarroJugador extends Actor
+public class CarroJugador extends Carro
 {
     private static final int MARCHA_MINIMA = 1;
     private static final int MARCHA_MAXIMA = 5;
@@ -47,7 +47,7 @@ public class CarroJugador extends Actor
     private int tiempoZonaBaja = 0;
 
     private int contadorDesaceleracion = 0;
-
+    private int puntos = 100;
     private boolean teclaESuelta = true;
     private boolean teclaQSuelta = true;
 
@@ -421,5 +421,22 @@ public class CarroJugador extends Actor
         }
 
         return restante / 60;
+    }
+    public void quitarPuntos(int cantidad)
+    {
+        puntos -= cantidad;
+    
+        if (puntos < 0)
+        {
+            puntos = 0;
+        }
+    }
+    public int getPuntos()
+    {
+        return puntos;
+    }
+    public boolean estaMuerto()
+    {
+        return puntos <= 0;
     }
 }

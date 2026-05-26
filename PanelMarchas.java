@@ -3,8 +3,7 @@ import greenfoot.*;
 public class PanelMarchas extends Actor
 {
     private static final int ANCHO = 270;
-    private static final int ALTO = 125;
-
+    private static final int ALTO = 150;
     private CarroJugador jugador;
 
     public PanelMarchas(CarroJugador jugador)
@@ -63,7 +62,18 @@ public class PanelMarchas extends Actor
 
         imagen.setFont(new Font("Arial", true, false, 20));
         imagen.setColor(new Color(80, 180, 255));
-        imagen.drawString("Marcha: " + marcha, 15, 30);
+        if (jugador.estaMuerto())
+        {
+            imagen.setColor(new Color(255, 50, 50));
+            imagen.drawString("GAME OVER", 15, 30);
+        
+            Greenfoot.stop();
+        }
+        else
+        {
+            imagen.setColor(new Color(80, 180, 255));
+            imagen.drawString("Marcha: " + marcha, 15, 30);
+        }
 
         imagen.setFont(new Font("Arial", false, false, 17));
         imagen.setColor(Color.WHITE);
@@ -71,6 +81,7 @@ public class PanelMarchas extends Actor
         imagen.drawString("Velocidad: " + velocidad, 15, 83);
 
         dibujarMensajeCambio(imagen, marcha);
+        imagen.drawString("Puntos: " + jugador.getPuntos(), 15, 105);
     }
 
     private void dibujarMensajeCambio(GreenfootImage imagen, int marcha)
@@ -86,7 +97,8 @@ public class PanelMarchas extends Actor
             imagen.drawString("Marcha final", 15, 110);
         } else {
             imagen.setColor(new Color(120, 220, 120));
-            imagen.drawString("Cambio estable", 15, 110);
+            imagen.drawString("Cambio estable", 15, 130);
         }
     }
+    
 }
