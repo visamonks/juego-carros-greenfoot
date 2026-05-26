@@ -47,14 +47,14 @@ public class CarroJugador extends Carro
     private int tiempoZonaBaja = 0;
 
     private int contadorDesaceleracion = 0;
-    private int puntos = 100;
+    private int puntos = 10;
     private boolean teclaESuelta = true;
     private boolean teclaQSuelta = true;
 
     public CarroJugador()
     {
         setImage("carro_jugador.png");
-        getImage().scale(115, 110);
+        getImage().scale(55, 85);
     }
 
     public void act()
@@ -424,7 +424,7 @@ public class CarroJugador extends Carro
     }
     public void quitarPuntos(int cantidad)
     {
-        puntos -= cantidad;
+        puntos -= 1;
     
         if (puntos < 0)
         {

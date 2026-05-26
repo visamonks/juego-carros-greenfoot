@@ -81,7 +81,7 @@ public class PanelMarchas extends Actor
         imagen.drawString("Velocidad: " + velocidad, 15, 83);
 
         dibujarMensajeCambio(imagen, marcha);
-        imagen.drawString("Puntos: " + jugador.getPuntos(), 15, 105);
+        imagen.drawString("Vidas: " + jugador.getPuntos(), 15, 105);
     }
 
     private void dibujarMensajeCambio(GreenfootImage imagen, int marcha)
