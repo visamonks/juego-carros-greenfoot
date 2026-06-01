@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=LuzCarretera
+comment1.params=jugador\ ladoIzquierdo
+comment1.target=LuzCarretera(CarroJugador,\ boolean)
+comment2.params=
+comment2.target=void\ crearImagen()
+comment3.params=
+comment3.target=void\ act()
+comment4.params=
+comment4.target=void\ bajar()
+comment5.params=
+comment5.target=void\ eliminarSiSaleDelMundo()
+numComments=6

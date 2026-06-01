@@ -1,14 +1,13 @@
 #BlueJ class context
 comment0.target=Carroblanco
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Carroblanco\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=
 comment1.target=Carroblanco()
-comment2.params=world
-comment2.target=void\ addedToWorld(greenfoot.World)
+comment2.params=
+comment2.target=void\ act()
 comment3.params=
-comment3.target=void\ act()
+comment3.target=void\ mover()
 comment4.params=
-comment4.target=void\ detectarColision()
+comment4.target=int\ obtenerCarrilAleatorio()
 comment5.params=
-comment5.target=void\ mover()
+comment5.target=void\ detectarColision()
 numComments=6

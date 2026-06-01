@@ -1,0 +1,12 @@
+Sonidos instalados:
+
+- engine_idle_1.wav a engine_idle_5.wav: motor en loop por marcha.
+- cambiomarcha.wav: suena cuando el cambio con E o Q sale bien.
+- choque.wav: suena cuando un enemigo toca al jugador y se pierde una vida.
+
+Cambios en código:
+
+- CarroJugador.java ahora maneja un loop de motor usando GreenfootSound.
+- El motor cambia de archivo según la marcha actual.
+- El volumen sube al acelerar, baja al frenar y queda medio cuando no se acelera.
+- El motor se detiene cuando el carro se apaga o cuando se llega a game over.

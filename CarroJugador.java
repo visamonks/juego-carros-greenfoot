@@ -18,7 +18,7 @@ public class CarroJugador extends Carro
 
     private static final int RPM_DESPUES_SUBIR = 1300;
     private static final int RPM_DESPUES_BAJAR = 2100;
-
+    
     private static final int LIMITE_TIEMPO_ALTA = 140;
     private static final int LIMITE_TIEMPO_BAJA = 140;
     private static final int TIEMPO_APAGADO_TOTAL = 180;
@@ -48,8 +48,19 @@ public class CarroJugador extends Carro
 
     private int contadorDesaceleracion = 0;
     private int puntos = 10;
+    private boolean yaSonoPerdiste = false;
     private boolean teclaESuelta = true;
     private boolean teclaQSuelta = true;
+
+    private GreenfootSound[] sonidosMotor = {
+        new GreenfootSound("engine_idle_1.wav"),
+        new GreenfootSound("engine_idle_2.wav"),
+        new GreenfootSound("engine_idle_3.wav"),
+        new GreenfootSound("engine_idle_4.wav"),
+        new GreenfootSound("engine_idle_5.wav")
+    };
+
+    private int marchaSonando = 0;
 
     public CarroJugador()
     {
@@ -60,10 +71,12 @@ public class CarroJugador extends Carro
     public void act()
     {
         if (apagado) {
+            detenerSonidoMotor();
             procesoCarroApagado();
             return;
         }
 
+        actualizarSonidoMotor();
         controlarMarchas();
         actualizarRevoluciones();
         actualizarVelocidadVisual();
@@ -106,6 +119,7 @@ public class CarroJugador extends Carro
         if (revoluciones >= RPM_CAMBIO_SUBIDA_MIN && revoluciones <= RPM_CAMBIO_SUBIDA_MAX) {
             marcha++;
             revoluciones = RPM_DESPUES_SUBIR;
+            Greenfoot.playSound("cambiomarcha.wav");
             reiniciarZonasDeCambio();
         } else {
             apagarCarro();
@@ -121,6 +135,7 @@ public class CarroJugador extends Carro
         if (revoluciones <= RPM_CAMBIO_BAJADA_MAX) {
             marcha--;
             revoluciones = RPM_DESPUES_BAJAR;
+            Greenfoot.playSound("cambiomarcha.wav");
             reiniciarZonasDeCambio();
         } else {
             apagarCarro();
@@ -272,6 +287,7 @@ public class CarroJugador extends Carro
         tiempoApagado = TIEMPO_APAGADO_TOTAL;
         revoluciones = 0;
         contadorDesaceleracion = 0;
+        detenerSonidoMotor();
         reiniciarZonasDeCambio();
     }
 
@@ -338,12 +354,48 @@ public class CarroJugador extends Carro
         velocidadVisual = VELOCIDAD_MINIMA_VISUAL;
         contadorDesaceleracion = 0;
         reiniciarZonasDeCambio();
+        actualizarSonidoMotor();
     }
 
     private void reiniciarZonasDeCambio()
     {
         tiempoZonaAlta = 0;
         tiempoZonaBaja = 0;
+    }
+
+    private void actualizarSonidoMotor()
+    {
+        if (apagado || estaMuerto()) {
+            detenerSonidoMotor();
+            return;
+        }
+
+        int indiceMarcha = marcha - 1;
+
+        if (marchaSonando != marcha) {
+            detenerSonidoMotor();
+            sonidosMotor[indiceMarcha].playLoop();
+            marchaSonando = marcha;
+        } else if (!sonidosMotor[indiceMarcha].isPlaying()) {
+            sonidosMotor[indiceMarcha].playLoop();
+        }
+
+        if (Greenfoot.isKeyDown("up")) {
+            sonidosMotor[indiceMarcha].setVolume(78);
+        } else if (Greenfoot.isKeyDown("down")) {
+            sonidosMotor[indiceMarcha].setVolume(45);
+        } else {
+            sonidosMotor[indiceMarcha].setVolume(58);
+        }
+    }
+
+    private void detenerSonidoMotor()
+    {
+        for (int i = 0; i < sonidosMotor.length; i++) {
+            sonidosMotor[i].stop();
+        }
+
+        marchaSonando = 0;
     }
 
     private void mantenerDentroDelCamino()
@@ -429,6 +481,19 @@ public class CarroJugador extends Carro
         if (puntos < 0)
         {
             puntos = 0;
+        }
+    
+        // Si todavía tiene vidas, suena choque
+        if (puntos > 0)
+        {
+            Greenfoot.playSound("choque.wav");
+        }
+    
+        // Si se queda sin vidas, suena perdiste una sola vez
+        if (puntos == 0 && !yaSonoPerdiste)
+        {
+            Greenfoot.playSound("perdiste.wav");
+            yaSonoPerdiste = true;
         }
     }
     public int getPuntos()
