@@ -61,12 +61,11 @@ public class PanelMarchas extends Actor
         int velocidad = jugador.getVelocidadVisual();
 
         imagen.setFont(new Font("Arial", true, false, 20));
-        imagen.setColor(new Color(80, 180, 255));
+
         if (jugador.estaMuerto())
         {
             imagen.setColor(new Color(255, 50, 50));
             imagen.drawString("GAME OVER", 15, 30);
-        
             Greenfoot.stop();
         }
         else
@@ -81,7 +80,17 @@ public class PanelMarchas extends Actor
         imagen.drawString("Velocidad: " + velocidad, 15, 83);
 
         dibujarMensajeCambio(imagen, marcha);
+
         imagen.drawString("Vidas: " + jugador.getPuntos(), 15, 105);
+
+ 
+        World w = getWorld();
+
+        if (w != null)
+        {
+            MundoCarros mundo = (MundoCarros) w;
+            imagen.drawString("Puntos: " + mundo.getScore(), 100, 105);
+        }
     }
 
     private void dibujarMensajeCambio(GreenfootImage imagen, int marcha)
@@ -100,5 +109,4 @@ public class PanelMarchas extends Actor
             imagen.drawString("Cambio estable", 15, 130);
         }
     }
-    
 }
