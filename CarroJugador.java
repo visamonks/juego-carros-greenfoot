@@ -496,6 +496,21 @@ public class CarroJugador extends Carro
             yaSonoPerdiste = true;
         }
     }
+    public void agregarPuntos()
+    {
+        puntos += 1;
+    
+        if (puntos < 0)
+        {
+            puntos = 0;
+        }
+    
+        // Si todavía tiene vidas, suena choque
+        if (puntos > 0)
+        {
+            Greenfoot.playSound("correcto.wav");
+        }
+    }
     public int getPuntos()
     {
         return puntos;

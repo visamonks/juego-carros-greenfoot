@@ -45,6 +45,9 @@ public class MundoCarros extends World
             Carroblanco.class,
             Carronegro.class,
             Carroverde.class,
+            Persona.class,
+            SemaforoVerde.class,
+            SemaforoRojo.class,
             LuzCarretera.class,
             LineaCarretera.class
         );
@@ -75,7 +78,16 @@ public class MundoCarros extends World
         
         Carroverde verde = new Carroverde();
         addObject(verde, CARRIL_DERECHA, 430);
-
+        
+        Persona persona = new Persona();
+        addObject(persona, CARRIL_DERECHA, 300);
+        
+        SemaforoVerde semaforoverde = new SemaforoVerde();
+        addObject(semaforoverde, CARRIL_IZQUIERDA, 430);
+        
+        SemaforoRojo semafororojo = new SemaforoRojo();
+        addObject(semafororojo, CARRIL_IZQUIERDA, 130);
+        
         PanelMarchas panelMarchas = new PanelMarchas(jugador);
         addObject(panelMarchas, POS_X_PANEL, POS_Y_PANEL);
 

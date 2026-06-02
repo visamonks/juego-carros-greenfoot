@@ -1,8 +1,19 @@
-import greenfoot.*;
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public class Carroazull extends Carro
+/**
+ * Write a description of class SemaforoRojo here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class SemaforoRojo extends Carro
 {
-    private int velocidad = 3;
+    /**
+     * Act - do whatever the SemaforoRojo wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    
+    private int velocidad = 4;
 
     // Carriles seguros dentro de la carretera
     private static final int CARRIL_IZQUIERDA = 120;
@@ -10,19 +21,19 @@ public class Carroazull extends Carro
     private static final int CARRIL_CENTRO = 300;
     private static final int CARRIL_CENTRO_DERECHA = 390;
     private static final int CARRIL_DERECHA = 480;
-
-    public Carroazull()
+    
+    public SemaforoRojo()
     {
-        setImage("carro_azul.png");
-        getImage().scale(55, 85);
+        setImage("semaforo_rojo.png");
+        getImage().scale(40, 55);
     }
-
+    
     public void act()
     {
         mover();
         detectarColision();
     }
-
+    
     public void mover()
     {
         int nuevaY = getY() + velocidad;
@@ -54,7 +65,7 @@ public class Carroazull extends Carro
             return CARRIL_DERECHA;
         }
     }
-
+    
     public void detectarColision()
     {
         CarroJugador jugador = 

@@ -1,33 +1,40 @@
-import greenfoot.*;
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public class Carroazull extends Carro
+/**
+ * Write a description of class Persona here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class Persona extends Carro
 {
+    /**
+     * Act - do whatever the Persona wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
     private int velocidad = 3;
-
-    // Carriles seguros dentro de la carretera
     private static final int CARRIL_IZQUIERDA = 120;
     private static final int CARRIL_CENTRO_IZQUIERDA = 210;
     private static final int CARRIL_CENTRO = 300;
     private static final int CARRIL_CENTRO_DERECHA = 390;
     private static final int CARRIL_DERECHA = 480;
 
-    public Carroazull()
+    public Persona()
     {
-        setImage("carro_azul.png");
-        getImage().scale(55, 85);
+        setImage("persona.png");
+        getImage().scale(40, 55);
     }
-
+    
     public void act()
     {
         mover();
         detectarColision();
     }
-
+    
     public void mover()
     {
         int nuevaY = getY() + velocidad;
-
-        // Si llega abajo, reaparece arriba en un carril seguro
+    
         if (nuevaY >= getWorld().getHeight())
         {
             setLocation(obtenerCarrilAleatorio(), 0);
@@ -37,7 +44,7 @@ public class Carroazull extends Carro
             setLocation(getX(), nuevaY);
         }
     }
-
+    
     private int obtenerCarrilAleatorio()
     {
         int carril = Greenfoot.getRandomNumber(5);

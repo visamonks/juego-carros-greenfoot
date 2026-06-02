@@ -2,7 +2,7 @@ import greenfoot.*;
 
 public class Carroverde extends Carro
 {
-    private int velocidad = 5;
+    private int velocidad = 3;
 
     // Carriles seguros dentro de la carretera
     private static final int CARRIL_IZQUIERDA = 120;
